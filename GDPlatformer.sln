@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDPlatformer", "GDPlatformer\GDPlatformer.csproj", "{E0D8682A-C148-48A2-97AA-0090877D1044}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0D8682A-C148-48A2-97AA-0090877D1044}.Debug|x86.ActiveCfg = Debug|x86
+		{E0D8682A-C148-48A2-97AA-0090877D1044}.Debug|x86.Build.0 = Debug|x86
+		{E0D8682A-C148-48A2-97AA-0090877D1044}.Release|x86.ActiveCfg = Release|x86
+		{E0D8682A-C148-48A2-97AA-0090877D1044}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DEB34CF-CD85-4FF2-B649-048EAED26B48}
+	EndGlobalSection
+EndGlobal
