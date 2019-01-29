@@ -18,6 +18,8 @@ namespace GDPlatformer
     SpriteBatch spriteBatch;
     Camera camera;
     GameScreen gameScreen;
+    Color background;
+    Matrix currentViewMatrix;
     #endregion
 
     #region Constructor
@@ -25,6 +27,7 @@ namespace GDPlatformer
     {
       graphics = new GraphicsDeviceManager(this);
       Content.RootDirectory = "Content";
+      IsFixedTimeStep = false;
     }
     #endregion
 
@@ -42,6 +45,7 @@ namespace GDPlatformer
       graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.Dimensions.Y;
       graphics.ApplyChanges();
       camera = new Camera(GraphicsDevice.Viewport);
+      background = new Color(208, 244, 247);
     }
 
     /// <summary>
@@ -73,13 +77,14 @@ namespace GDPlatformer
 
       base.Update(gameTime);
       ScreenManager.Instance.Update(gameTime);
-      InputManager.Instance.Update();
       // TODO: Fix Preformance
       if (ScreenManager.Instance.CurrentScreen is GameScreen)
       {
         gameScreen = (GameScreen)ScreenManager.Instance.CurrentScreen;
         camera.SetReference(gameScreen.Player);
       }
+      currentViewMatrix = camera.GetViewMatrix();
+      if (ScreenManager.Instance.isGameOver) Exit();
     }
 
     /// <summary>
@@ -89,9 +94,18 @@ namespace GDPlatformer
     protected override void Draw(GameTime gameTime)
     {
       base.Draw(gameTime);
-      graphics.GraphicsDevice.Clear(Color.Black);
-      spriteBatch.Begin(transformMatrix: camera.GetViewMatrix());
-      ScreenManager.Instance.Draw(spriteBatch);
+      graphics.GraphicsDevice.Clear(background);
+      spriteBatch.Begin(transformMatrix: currentViewMatrix);
+
+      if (ScreenManager.Instance.CurrentScreen is GameScreen)
+      {
+        gameScreen.Draw(spriteBatch, camera);
+      }
+      else
+      {
+        ScreenManager.Instance.Draw(spriteBatch);
+      }
+
       spriteBatch.End();
     }
     #endregion
